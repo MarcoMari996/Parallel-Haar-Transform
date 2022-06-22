@@ -18,7 +18,20 @@ The Haar mother wavelet is included in the filtering functions. In the end we ca
 - Finally Diagonal details are the result of applying 2 high pass filters.
 
 Multi-level decomposition is possible by iteratively repeating the operations on the approximation of the previous level.
-<img src="results/merged_multilevel_1.png">
-<img src="results/merged_multilevel_2.png">
+<img src="results/merged_multilevel_1.jpeg">
+<img src="results/merged_multilevel_2.jpeg">
+
+### Serial Code Performances
+<img src="/results/serial-code-perf.png">
+
+All the available parallelism is closed inside the 4 iterated operations that allow to compute the decompositions. 
+And here we see how these are translated into code.
+<img src="/results/serial-code-details-1.png">
+Unfortunately, since each level of decomposition starts from the approximation of the previous level, there’s the need of waiting for the computation of the previous level to start computing the next one, which is basically a loop-carried dependence that cannot be parallelized.
+<img src="/results/serial-code-details-2.png">
+So, in this sense, the level of parallelism that could be achieved is anyway limited and in particular here we see how it depends on the levels of decomposition.
+<img src="results/speed-up-limitation-vs-decomplevels.png">
+Moreover there are other limitations regarding the increasing of the levels of decomposition with the purpose of achieving a greater level of parallelism, because, first of all, the total amount of decomposition is upper bounded by the dimension of the image, and second, there’s no meaning in going too deep in the decomposition of the image.
+
 
 
