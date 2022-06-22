@@ -52,7 +52,7 @@ Moreover there are other limitations regarding the increasing of the levels of d
 
 ### OpenMP implementation via "sections" construct
 
-<img src="/results/parallel-sections-code.png">
+<img src="/results/paralell-sections-code.png">
 
 ## Results using Google Compute Engines machines
 
