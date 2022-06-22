@@ -18,7 +18,9 @@ The Haar mother wavelet is included in the filtering functions. In the end we ca
 - Finally Diagonal details are the result of applying 2 high pass filters.
 
 Multi-level decomposition is possible by iteratively repeating the operations on the approximation of the previous level.
+#### single level decomposition example
 <img src="results/merged_multilevel_1.jpeg">
+#### 2 levels decomposition example
 <img src="results/merged_multilevel_2.jpeg">
 
 ### Serial Code Performances
@@ -33,5 +35,12 @@ So, in this sense, the level of parallelism that could be achieved is anyway lim
 <img src="results/speed-up-limitation-vs-decomplevels.png">
 Moreover there are other limitations regarding the increasing of the levels of decomposition with the purpose of achieving a greater level of parallelism, because, first of all, the total amount of decomposition is upper bounded by the dimension of the image, and second, there’s no meaning in going too deep in the decomposition of the image.
 
+### OpenMP implementation via "parallel for" construct
+<img src="/results/parallel-for-code.png">
+### OpenMP implementation via "sections" construct
+<img src="/results/parallel-sections-code.png">
+
+## Results using Google Compute Engines machines
+<img src="/results/mwct-comparison.png">
 
 
